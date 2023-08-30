@@ -38,4 +38,7 @@ Good luck =)
 
 # Implementation notes
 
-Model types and client are taken from [https://github.com/Gabb-c/pokenode-ts](https://github.com/Gabb-c/pokenode-ts) with refactor
+- Refactored initial setup to use [Vite](https://vitejs.dev/) instead of [Webpack](https://webpack.js.org/) in [Create React App](https://create-react-app.dev/)
+- Moved `index.html` into `src` folder for Vite entry point
+- Initial vite config [https://stackblitz.com/edit/vitejs-vite-sizsdi?file=tsconfig.json&terminal=dev](https://stackblitz.com/edit/vitejs-vite-sizsdi)
+- Model types and client are taken from [https://github.com/Gabb-c/pokenode-ts](https://github.com/Gabb-c/pokenode-ts) with refactor

@@ -8,7 +8,6 @@ import { useListPokemons } from "../../libs/useRequest";
 const api = new MainClient();
 
 export const HomePage = () => {
-
   const { data, isLoading, error } = useListPokemons(api)
 
   return (
