@@ -5,7 +5,7 @@ import {
   type PokemonHabitat,
   type NamedAPIResourceList
 } from "../models";
-import { BaseClient } from "../structures/base";
+import { BaseClient } from "./base.client";
 import { type AxiosError, type AxiosResponse } from "axios";
 
 /**

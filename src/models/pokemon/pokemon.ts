@@ -2,7 +2,7 @@ import {
   type Name,
   type NamedAPIResource,
   type VersionGameIndex,
-} from "../Common";
+} from "../common";
 
 /**
  * ## Pokemon

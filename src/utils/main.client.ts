@@ -1,4 +1,4 @@
-import { BaseClient, type ClientArgs } from "../structures/base";
+import { BaseClient, type ClientArgs } from "./base.client";
 import { PokemonClient } from "./pokemon.client";
 
 /**

@@ -6,7 +6,7 @@ module.exports = {
   extends: [
     'standard-with-typescript'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'tsconfig.json'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
