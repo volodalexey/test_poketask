@@ -35,3 +35,7 @@
 Main criteria **Level 1**, **Level 2** desirable for implementation.
 
 Good luck =)
+
+# Implementation notes
+
+Model types and client are taken from [https://github.com/Gabb-c/pokenode-ts](https://github.com/Gabb-c/pokenode-ts) with refactor

@@ -1,12 +1,11 @@
-export const List = () => (
-  <>
-    <>1</>
-    <>2</>
-    <>3</>
-    <>4</>
-    <>5</>
-    <>6</>
-    <>7</>
-    <>8</>
-  </>
+import { NamedAPIResourceList } from "../../models";
+
+export const List = ({ data, isLoading }: {
+  data: NamedAPIResourceList | undefined,
+  isLoading: boolean,
+}) => (
+  <ul>
+    {isLoading ? '...loding...' : data?.results
+      .map(result => (<li key={result.url}>{result.name} {result.url}</li>))}
+  </ul>
 );
