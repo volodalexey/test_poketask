@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { type AxiosError, type AxiosInstance, type AxiosResponse, type InternalAxiosRequestConfig } from "axios";
 
 import {
   handleRequest,
@@ -6,8 +6,7 @@ import {
   handleResponse,
   handleResponseError,
 } from "../config/logger";
-import { BASE_URL } from "../constants";
-import { ENDPOINTS } from "../constants";
+import { BASE_URL, type ENDPOINTS } from "../constants";
 
 type ObjectValue<T> = T[keyof T];
 type Endpoint = ObjectValue<typeof ENDPOINTS>;
@@ -20,7 +19,7 @@ export interface ClientArgs {
   /**
    * ## Enable logs
    */
-  logs?: boolean;
+  logs?: boolean
 }
 
 /**
@@ -29,7 +28,7 @@ export interface ClientArgs {
 export class BaseClient {
   protected api: AxiosInstance;
 
-  constructor(clientOptions?: ClientArgs) {
+  constructor (clientOptions?: ClientArgs) {
     this.api = axios.create({
       baseURL: BASE_URL.REST,
       headers: {
@@ -39,16 +38,16 @@ export class BaseClient {
 
     this.api.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => handleRequest(config, clientOptions?.logs),
-      (error: AxiosError<string>) => handleRequestError(error, clientOptions?.logs),
+      async (error: AxiosError<string>) => await handleRequestError(error, clientOptions?.logs),
     );
 
     this.api.interceptors.response.use(
       (response: AxiosResponse) => handleResponse(response, clientOptions?.logs),
-      (error: AxiosError<string>) => handleResponseError(error, clientOptions?.logs),
+      async (error: AxiosError<string>) => await handleResponseError(error, clientOptions?.logs),
     );
   }
 
-  protected getListURL(endpoint: Endpoint, offset?: number, limit?: number): string {
+  protected getListURL (endpoint: Endpoint, offset?: number, limit?: number): string {
     return `${endpoint}?offset=${offset ?? 0}&limit=${limit ?? 20}`;
   }
 }

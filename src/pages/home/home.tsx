@@ -3,7 +3,7 @@ import { Filter } from "../../components/filter";
 import { Error } from "../../components/error";
 import { List } from "../../components/list";
 import { Pagination } from "../../components/pagination";
-import { useListPokemons } from "../../libs/useRequest";
+import { useListPokemons } from "../../utils/useRequest";
 
 const api = new MainClient();
 

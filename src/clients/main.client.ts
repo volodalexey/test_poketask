@@ -1,4 +1,4 @@
-import { BaseClient, ClientArgs } from "../structures/base";
+import { BaseClient, type ClientArgs } from "../structures/base";
 import { PokemonClient } from "./pokemon.client";
 
 /**
@@ -12,7 +12,7 @@ import { PokemonClient } from "./pokemon.client";
 export class MainClient extends BaseClient {
   public pokemon: PokemonClient;
 
-  constructor(clientOptions?: ClientArgs) {
+  constructor (clientOptions?: ClientArgs) {
     super(clientOptions);
 
     this.pokemon = new PokemonClient(clientOptions);

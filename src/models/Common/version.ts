@@ -1,13 +1,13 @@
-import { NamedAPIResource } from "./resource";
+import { type NamedAPIResource } from "./resource";
 
 /**
  * The internal id and version of an API resource
  */
 export interface VersionGameIndex {
   /** The internal id of an API resource within game data */
-  game_index: number;
+  game_index: number
   /** The version relevent to this game index */
-  version: NamedAPIResource;
+  version: NamedAPIResource
 }
 
 /**
@@ -15,9 +15,9 @@ export interface VersionGameIndex {
  */
 export interface VersionGroupFlavorText {
   /** The localized name for an API resource in a specific language */
-  text: string;
+  text: string
   /** The language this name is in */
-  language: NamedAPIResource;
+  language: NamedAPIResource
   /** The version group which uses this flavor text */
-  version_group: NamedAPIResource;
+  version_group: NamedAPIResource
 }

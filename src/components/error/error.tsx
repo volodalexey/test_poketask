@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { type AxiosError } from "axios";
 
 export const Error = ({ error }: { error: AxiosError<string> }) => (
   <pre>
