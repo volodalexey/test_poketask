@@ -1,9 +1,21 @@
-# Reccomendations
+# [DEMO](https://volodalexey.github.io/test_poketask)
+
+# Implementation notes
+
+- Refactored initial setup to use [Vite](https://vitejs.dev/) instead of [Webpack](https://webpack.js.org/) in [Create React App](https://create-react-app.dev/)
+- Moved `index.html` into `src` folder for Vite entry point
+- Initial vite config [https://stackblitz.com/edit/vitejs-vite-sizsdi?file=tsconfig.json&terminal=dev](https://stackblitz.com/edit/vitejs-vite-sizsdi)
+- Model types and client wrapper are taken from [https://github.com/Gabb-c/pokenode-ts](https://github.com/Gabb-c/pokenode-ts) with refactor
+- Deployed demo has hash router instead of history router because of github pages limitation
+
+# Task
+
+## Reccomendations
 
 - use yarn
 - follow code structure
 
-# Goal
+## Goal
 
 - Using following API https://pokeapi.co/docs/v2#resource-listspagination-section implement:
 
@@ -35,11 +47,3 @@
 Main criteria **Level 1**, **Level 2** desirable for implementation.
 
 Good luck =)
-
-# Implementation notes
-
-- Refactored initial setup to use [Vite](https://vitejs.dev/) instead of [Webpack](https://webpack.js.org/) in [Create React App](https://create-react-app.dev/)
-- Moved `index.html` into `src` folder for Vite entry point
-- Initial vite config [https://stackblitz.com/edit/vitejs-vite-sizsdi?file=tsconfig.json&terminal=dev](https://stackblitz.com/edit/vitejs-vite-sizsdi)
-- Model types and client wrapper are taken from [https://github.com/Gabb-c/pokenode-ts](https://github.com/Gabb-c/pokenode-ts) with refactor
-- Deployed demo has hash router instead of history router because of github pages limitation
