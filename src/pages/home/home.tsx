@@ -7,6 +7,7 @@ import { Pagination } from "../../components/pagination";
 import { useListPokemons } from "../../utils/srw.hooks";
 import { ClientContext } from "../../utils/client.context";
 import { type RootState, type IPokemonsListState, pokemonsListSlice } from "../../redux";
+import { Spinner } from "../../components/spinner";
 
 export const HomePage = () => {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ export const HomePage = () => {
     <div>
       <Filter />
       {error ? <Error error={error} /> : null}
+      <Spinner isLoading={isLoading} />
       <List data={data} isLoading={isLoading} />
       <Pagination offset={offset} limit={limit} count={count} setOffset={pokemonsListSlice.setOffset} />
     </div>

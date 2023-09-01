@@ -2,8 +2,22 @@ import styled from "@emotion/styled";
 import { type ThemePropsType } from "../../styles";
 import { Link } from "react-router-dom";
 
-export const Ul = styled.ul`
+interface UlPropsType {
+  isLoading: boolean
+}
+
+export const Ul = styled.ul<UlPropsType>`
   list-style: none;
+  position: relative;
+  transition: opacity 0.3s;
+  ${({ isLoading }) => isLoading
+? `
+    clear: both;
+    opacity: 0.5;
+    user-select: none;
+    pointer-events: none;
+  `
+: ''};
 `
 
 export const ListItem = styled.li`
