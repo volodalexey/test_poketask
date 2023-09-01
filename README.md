@@ -37,7 +37,7 @@
 
 ### Level 3
 
-- Add filter https://pokeapi.co/docs/v2#abilities, implement as panel nither dropdown (select), could be multiple parameters.
+- Add filter https://pokeapi.co/docs/v2#abilities, implement as panel or dropdown (select), could be multiple parameters.
 
 ### Level 4
 

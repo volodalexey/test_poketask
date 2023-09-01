@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { pokemonsListSlice } from './slices'
-import { themeReducer } from './slices/theme.slice'
+import { themeReducer, pokemonsListSlice } from './slices'
 
 export const store = configureStore({
   reducer: {

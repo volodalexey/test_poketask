@@ -1,6 +1,7 @@
 import { FULL_CLIENT_PATH } from "../../constants";
 import { type NamedAPIResourceList } from "../../models";
-import { ContentLineDivider, ListItem, ListLink, TitleLine, Ul } from "./styled";
+import { Card } from "../card";
+import { ContentLineDivider, ListItem, ListLink, Ul } from "./styled";
 
 export const List = ({ data, isLoading }: {
   data: NamedAPIResourceList | undefined
@@ -10,7 +11,7 @@ export const List = ({ data, isLoading }: {
     {data?.results.map((resource, idx, resources) => (
         <ListItem key={resource.url}>
           <ListLink to={`${FULL_CLIENT_PATH.pokemonsView$}/${resource.name}`}>
-            <TitleLine>{resource.name}</TitleLine>
+            <Card resource={resource} />
             {(resources[idx + 1] !== null) ? <ContentLineDivider /> : null}
           </ListLink>
         </ListItem>

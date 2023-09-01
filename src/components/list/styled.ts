@@ -31,11 +31,6 @@ export const ListLink = styled(Link)<ThemePropsType>`
   &:visited { text-decoration: none; }
 `
 
-export const TitleLine = styled.div`
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
-`
-
 export const ContentLineDivider = styled.hr<ThemePropsType>`
   margin-top: 1rem;
   margin-bottom: 1rem;
