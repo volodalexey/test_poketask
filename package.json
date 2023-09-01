@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "VITE_HASH_ROUTER=true vite build",
     "preview": "vite preview"
   },
   "dependencies": {
