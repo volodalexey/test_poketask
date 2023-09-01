@@ -42,3 +42,4 @@ Good luck =)
 - Moved `index.html` into `src` folder for Vite entry point
 - Initial vite config [https://stackblitz.com/edit/vitejs-vite-sizsdi?file=tsconfig.json&terminal=dev](https://stackblitz.com/edit/vitejs-vite-sizsdi)
 - Model types and client wrapper are taken from [https://github.com/Gabb-c/pokenode-ts](https://github.com/Gabb-c/pokenode-ts) with refactor
+- Deployed demo has hash router instead of history router because of github pages limitation
