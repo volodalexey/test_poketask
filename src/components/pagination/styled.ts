@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { type AppTheme } from "../../styles";
+import { type ThemePropsType } from "../../styles";
 
 export const DivMain = styled.div`
   margin-top: 0.5rem;
@@ -15,9 +15,8 @@ export const DivMiddle = styled.div`
   
 `
 
-interface ButtonPropsType {
+interface ButtonPropsType extends ThemePropsType {
   fixedFlex?: boolean
-  theme?: AppTheme
 }
 
 export const Button = styled.button<ButtonPropsType>`

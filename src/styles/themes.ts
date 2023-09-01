@@ -99,3 +99,7 @@ export const DEFAULT_THEME = storageTheme ?? window.matchMedia('(prefers-color-s
 export function useAppTheme (): AppTheme {
   return useTheme() as AppTheme
 }
+
+export interface ThemePropsType {
+  theme?: AppTheme
+}
