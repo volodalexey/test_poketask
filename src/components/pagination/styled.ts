@@ -2,9 +2,11 @@ import styled from "@emotion/styled";
 import { type ThemePropsType } from "../../styles";
 
 export const DivMain = styled.div`
-  margin-top: 0.5rem;
   display: flex;
   flex-direction: row;
+  padding: 1rem;
+  max-width: 500px;
+  margin: 0.5rem auto;
 `
 
 export const DivMiddle = styled.div`

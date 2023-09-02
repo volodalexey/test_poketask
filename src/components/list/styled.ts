@@ -10,6 +10,8 @@ export const Ul = styled.ul<UlPropsType>`
   list-style: none;
   position: relative;
   transition: opacity 0.3s;
+  display: flex;
+  flex-wrap: wrap;
   ${({ isLoading }) => isLoading
 ? `
     clear: both;
@@ -23,17 +25,11 @@ export const Ul = styled.ul<UlPropsType>`
 export const ListItem = styled.li`
   margin-left: 1rem;
   margin-right: 1rem;
+  max-width: 500px;
 `
 
 export const ListLink = styled(Link)<ThemePropsType>`
   color: ${({ theme }) => theme.text.secondary};
   &:link { text-decoration: none; }
   &:visited { text-decoration: none; }
-`
-
-export const ContentLineDivider = styled.hr<ThemePropsType>`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border-style: dashed;
-  border-color: ${({ theme }) => theme.divider};
 `

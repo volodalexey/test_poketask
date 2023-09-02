@@ -1,17 +1,39 @@
 import styled from "@emotion/styled";
+import { type ThemePropsType } from "../../styles";
 
 export const CardWrapper = styled.div`
   list-style: none;
   position: relative;
-  transition: opacity 0.3s;
+`
+export const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
-export const CardLines = styled.ul`
-  
+export const CardTitle = styled.h1`
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 48px;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
 `
 
-export const CardLine = styled.li`
-  
+export const CardTitleBadge = styled.span`
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #6c757d;
+  border-radius: 6px;
+  margin-left: 16px;
+  padding: 4px 7px;
+  font-weight: 700;
+  line-height: 1;
+`
+
+export const CardLine = styled.div`
+  line-height: 1.5;
 `
 
 export const CardAvatarMeta = styled.div`
@@ -38,4 +60,35 @@ export const CardAvatarImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`
+
+export const CardTableHeader = styled.div`
+  font-size: 16px;
+  line-height: 24px;
+  color: #212529;
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 4px 7px;
+  background-color: #21252908;
+`
+
+export const CardTableBody = styled.div`
+  padding: 4px 7px;
+  border-left: 1px solid rgba(0, 0, 0, 0.175);
+  border-right: 1px solid rgba(0, 0, 0, 0.175);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+`
+
+export const CardLabel = styled.span`
+  color: #212529;
+`
+
+export const ContentLineDivider = styled.hr<ThemePropsType>`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-style: dashed;
+  border-color: ${({ theme }) => theme.divider};
 `
