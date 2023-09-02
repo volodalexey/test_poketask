@@ -14,12 +14,12 @@ export const FlexRow = styled.div`
   flex-direction: row;
 `
 
-export const CardTitle = styled.h1`
+export const CardTitle = styled.h1<ThemePropsType>`
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 40px;
   font-weight: 500;
   line-height: 48px;
-  color: #212529;
+  color: ${({ theme }) => theme.text.primary};
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -66,28 +66,37 @@ export const CardAvatarImage = styled.img`
   object-fit: cover;
 `
 
-export const CardTableHeader = styled.div`
+export const CardTableHeader = styled.div<ThemePropsType>`
   font-size: 16px;
   line-height: 24px;
-  color: #212529;
-  border: 1px solid rgba(0, 0, 0, 0.175);
+  color: ${({ theme }) => theme.text.primary};
+  border-color: ${({ theme }) => theme.divider};
+  border-style: solid;
+  border-width: 1px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   padding: 4px 7px;
   background-color: #21252908;
 `
 
-export const CardTableBody = styled.div`
+export const CardTableBody = styled.div<ThemePropsType>`
   padding: 4px 7px;
-  border-left: 1px solid rgba(0, 0, 0, 0.175);
-  border-right: 1px solid rgba(0, 0, 0, 0.175);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+  border-color: ${({ theme }) => theme.divider};
+  border-style: solid;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-width: 0;
+  border-bottom-width: 1px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 `
 
-export const CardLabel = styled.span`
-  color: #212529;
+export const PrimaryText = styled.span<ThemePropsType>`
+  color: ${({ theme }) => theme.text.primary};
+`
+
+export const SecondaryText = styled.span<ThemePropsType>`
+  color: ${({ theme }) => theme.text.secondary};
 `
 
 export const ContentLineDivider = styled.hr<ThemePropsType>`
