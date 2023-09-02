@@ -1,17 +1,16 @@
 import { useContext } from "react";
-import { type NamedAPIResource } from "../../models";
 import { ClientContext, usePokemon } from "../../utils";
 import { CardWrapper, CardLine, CardAvatarMeta, CardAvatar, CardAvatarImage, CardTitle, CardTitleBadge, FlexRow, CardTableHeader, CardTableBody, CardLabel, ContentLineDivider } from "./styled";
 import { Skeleton } from "../skeleton";
 import { Error } from "../error";
 
 export interface CarpProps {
-  resource: NamedAPIResource
+  pokemonName: string
 }
 
-export const Card = ({ resource }: CarpProps) => {
+export const Card = ({ pokemonName }: CarpProps) => {
   const mainClient = useContext(ClientContext);
-  const { data, isLoading, error } = usePokemon(mainClient, resource.name)
+  const { data, isLoading, error } = usePokemon(mainClient, pokemonName)
   return <CardWrapper>
     {isLoading ?? <Skeleton />}
     {error ? <Error error={error} /> : null}

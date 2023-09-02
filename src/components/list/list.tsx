@@ -11,7 +11,7 @@ export const List = ({ data, isLoading }: {
     {data?.results.map((resource, idx, resources) => (
         <ListItem key={resource.url}>
           <ListLink to={`${FULL_CLIENT_PATH.pokemonsView$}/${resource.name}`}>
-            <Card resource={resource} />
+            <Card pokemonName={resource.name} />
           </ListLink>
         </ListItem>
     ))}

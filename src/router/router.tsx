@@ -8,14 +8,17 @@ import {
 import { CLIENT_PATH } from '../constants'
 import { HomePage, ErrorPage } from '../pages'
 import { HomeLayout } from '../layouts'
+import { PokemonViewPage } from '../pages/pokemon/pokemon.view'
 
 const routes = createRoutesFromElements(
   <Route>
     <Route index element={<HomeLayout />} />
 
     <Route path={`/${CLIENT_PATH.app.$root}`}>
-    <Route path={CLIENT_PATH.app.list.pokemons} element={<HomePage />} />
-        <Route path=":resourceId" element={<HomePage />} />
+      <Route path={CLIENT_PATH.app.list.pokemons} >
+        <Route index element={<HomePage />} />
+        <Route path={':pokemonName'} element={<PokemonViewPage />} />
+      </Route>
     </Route>
 
     <Route path="*" element={<ErrorPage error={new Error('Page not found')} />} />
