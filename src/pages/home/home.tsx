@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Filter } from "../../components/filter";
 import { Error } from "../../components/error";
@@ -6,7 +6,7 @@ import { List } from "../../components/list";
 import { Pagination } from "../../components/pagination";
 import { useListPokemons } from "../../utils/srw.hooks";
 import { ClientContext } from "../../utils/client.context";
-import { type RootState, type IPokemonsListState, pokemonsListSlice } from "../../redux";
+import { type RootState, type IPokemonsListState, pokemonsListSlice, filterSlice } from "../../redux";
 import { Spinner } from "../../components/spinner";
 
 export const HomePage = () => {
@@ -25,13 +25,18 @@ export const HomePage = () => {
     }
   }, [data, isLoading, offset, limit, count])
 
+  const onSetPage = useCallback((offset: number) => {
+    dispatch(pokemonsListSlice.setOffset(offset))
+    dispatch(filterSlice.actions.setItems([]))
+  }, [])
+
   return (
     <div>
       <Filter />
       {error ? <Error error={error} /> : null}
       <Spinner isLoading={isLoading} />
       <List data={data} isLoading={isLoading} />
-      <Pagination offset={offset} limit={limit} count={count} setOffset={pokemonsListSlice.setOffset} />
+      <Pagination offset={offset} limit={limit} count={count} setOffset={onSetPage} />
     </div>
   );
 };

@@ -2,9 +2,13 @@ import styled from "@emotion/styled";
 import { type ThemePropsType } from "../../styles";
 
 export const CardWrapper = styled.div`
-  list-style: none;
   position: relative;
 `
+
+export const CardContent = styled.div`
+  margin: 16px;
+`
+
 export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;

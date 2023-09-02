@@ -23,8 +23,6 @@ export const Ul = styled.ul<UlPropsType>`
 `
 
 export const ListItem = styled.li`
-  margin-left: 1rem;
-  margin-right: 1rem;
   max-width: 500px;
 `
 
