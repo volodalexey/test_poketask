@@ -1,7 +1,8 @@
-import { type AxiosError } from "axios";
+import { type SerializedError } from "@reduxjs/toolkit";
+import { type FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 
-export const Error = ({ error }: { error: AxiosError<string> }) => (
+export const Error = ({ error }: { error: FetchBaseQueryError | SerializedError }) => (
   <pre>
-    {JSON.stringify(error.toJSON(), undefined, 2)}
+    {JSON.stringify(error, undefined, 2)}
   </pre>
 );

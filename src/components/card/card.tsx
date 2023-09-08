@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
-import { ClientContext, usePokemon } from "../../utils";
+import { useEffect } from "react";
 import { CardWrapper, CardLine, CardAvatarMeta, CardAvatar, CardAvatarImage, CardTitle, CardTitleBadge, FlexRow, CardTableHeader, CardTableBody, PrimaryText, ContentLineDivider, CardContent, SecondaryText } from "./styled";
 import { Skeleton } from "../skeleton";
 import { Error } from "../error";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useGetPokemonQuery } from "../../redux";
 
 export interface CarpProps {
   pokemonName: string
@@ -13,8 +13,7 @@ export interface CarpProps {
 export const Card = ({ pokemonName }: CarpProps) => {
   const { selectedItems } = useTypedSelector(state => state.filterReducer)
   const { pushItems } = useActions()
-  const mainClient = useContext(ClientContext);
-  const { data, isLoading, error } = usePokemon(mainClient, pokemonName)
+  const { data, isLoading, error } = useGetPokemonQuery({ id: pokemonName });
   useEffect(() => {
     if (data != null) {
       pushItems(data.abilities.map(a => a.ability.name))
@@ -35,7 +34,7 @@ export const Card = ({ pokemonName }: CarpProps) => {
         </FlexRow>
       <CardTableHeader>Abilities</CardTableHeader>
       <CardTableBody>
-        {data.abilities.map(a => <span key={a.ability.url}><SecondaryText>#{a.slot}</SecondaryText> <PrimaryText>{a.ability.name}</PrimaryText> </span>)}
+        {data.abilities.map(a => <span key={`${a.ability.url}_${a.is_hidden}`}><SecondaryText>#{a.slot}</SecondaryText> <PrimaryText>{a.ability.name}</PrimaryText> </span>)}
       </CardTableBody>
       <ContentLineDivider />
       <CardLine><PrimaryText>Base experience:</PrimaryText> <SecondaryText>{data.base_experience}</SecondaryText></CardLine>
