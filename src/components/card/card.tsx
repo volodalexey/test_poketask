@@ -3,19 +3,15 @@ import { ClientContext, usePokemon } from "../../utils";
 import { CardWrapper, CardLine, CardAvatarMeta, CardAvatar, CardAvatarImage, CardTitle, CardTitleBadge, FlexRow, CardTableHeader, CardTableBody, PrimaryText, ContentLineDivider, CardContent, SecondaryText } from "./styled";
 import { Skeleton } from "../skeleton";
 import { Error } from "../error";
-import { useSelector } from "react-redux";
-import { type RootState } from "../../redux";
-import { type InitialFilterState } from "../../redux/types/filter.types";
 import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export interface CarpProps {
   pokemonName: string
 }
 
 export const Card = ({ pokemonName }: CarpProps) => {
-  const { selectedItems } = useSelector<RootState, InitialFilterState>(
-    (state) => state.filterReducer
-  )
+  const { selectedItems } = useTypedSelector(state => state.filterReducer)
   const { pushItems } = useActions()
   const mainClient = useContext(ClientContext);
   const { data, isLoading, error } = usePokemon(mainClient, pokemonName)

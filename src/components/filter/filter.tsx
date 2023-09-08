@@ -1,14 +1,12 @@
-import { useSelector } from "react-redux";
-import { type RootState } from "../../redux";
-import { type InitialFilterState } from "../../redux/types/filter.types";
 import { Button, Fieldset, FilterContent, FilterItemCheckbox, FilterItemLabel, Legend } from "./styled";
 import { useCallback } from "react";
 import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export const Filter = () => {
   const { toggleItem, toggleAll, resetAll } = useActions()
-  const { allItems, selectedItems } = useSelector<RootState, InitialFilterState>(
-    (state) => state.filterReducer
+  const { allItems, selectedItems } = useTypedSelector(
+    state => state.filterReducer
   )
   const onFilterItemChange = useCallback((item: string) => {
     toggleItem(item)

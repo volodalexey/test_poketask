@@ -1,20 +1,19 @@
 import { useCallback, useContext, useEffect } from "react";
-import { useSelector } from "react-redux"
 import { Filter } from "../../components/filter";
 import { Error } from "../../components/error";
 import { List } from "../../components/list";
 import { Pagination } from "../../components/pagination";
 import { useListPokemons } from "../../utils/srw.hooks";
 import { ClientContext } from "../../utils/client.context";
-import { type RootState, type IPokemonsListState } from "../../redux";
 import { Spinner } from "../../components/spinner";
 import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export const HomePage = () => {
   const { setResults, setNext, setPrevious, setCount, setOffset, setItems } = useActions()
   const mainClient = useContext(ClientContext);
-  const { offset, limit, count } = useSelector<RootState, IPokemonsListState>(
-    (state) => state.pokemonsListReducer
+  const { offset, limit, count } = useTypedSelector(
+    state => state.pokemonsListReducer
   )
   const { data, isLoading, error } = useListPokemons(mainClient, offset, limit)
   useEffect(() => {
