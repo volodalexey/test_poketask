@@ -3,9 +3,10 @@ import { ClientContext, usePokemon } from "../../utils";
 import { CardWrapper, CardLine, CardAvatarMeta, CardAvatar, CardAvatarImage, CardTitle, CardTitleBadge, FlexRow, CardTableHeader, CardTableBody, PrimaryText, ContentLineDivider, CardContent, SecondaryText } from "./styled";
 import { Skeleton } from "../skeleton";
 import { Error } from "../error";
-import { useDispatch, useSelector } from "react-redux";
-import { type RootState, filterSlice } from "../../redux";
+import { useSelector } from "react-redux";
+import { type RootState } from "../../redux";
 import { type InitialFilterState } from "../../redux/types/filter.types";
+import { useActions } from "../../hooks/useActions";
 
 export interface CarpProps {
   pokemonName: string
@@ -15,12 +16,12 @@ export const Card = ({ pokemonName }: CarpProps) => {
   const { selectedItems } = useSelector<RootState, InitialFilterState>(
     (state) => state.filterReducer
   )
-  const dispatch = useDispatch()
+  const { pushItems } = useActions()
   const mainClient = useContext(ClientContext);
   const { data, isLoading, error } = usePokemon(mainClient, pokemonName)
   useEffect(() => {
     if (data != null) {
-      dispatch(filterSlice.actions.pushItems(data.abilities.map(a => a.ability.name)))
+      pushItems(data.abilities.map(a => a.ability.name))
     }
   }, [data])
   return <CardWrapper>

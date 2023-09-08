@@ -15,17 +15,7 @@ export interface IListSlice {
   setNext: ActionCreatorWithPayload<string | null, 'setList/setNext'>
 }
 
-export function createListSlice (resourceType: ResourceType): {
-  listSlice: Slice<InitialListState>
-  listReducer: Reducer<InitialListState>
-  setOffset: ActionCreatorWithPayload<number, `set${ResourceType}List/setOffset`>
-  setLimit: ActionCreatorWithPayload<number, `set${ResourceType}List/setLimit`>
-  setQuery: ActionCreatorWithPayload<string, `set${ResourceType}List/setQuery`>
-  setResults: ActionCreatorWithPayload<Array<Draft<NamedAPIResource>>, `set${ResourceType}List/setResults`>
-  setCount: ActionCreatorWithPayload<number, `set${ResourceType}List/setCount`>
-  setPrevious: ActionCreatorWithPayload<string | null, `set${ResourceType}List/setPrevious`>
-  setNext: ActionCreatorWithPayload<string | null, `set${ResourceType}List/setNext`>
-} {
+export function createListSlice (resourceType: ResourceType) {
   const initialState: InitialListState = {
     offset: API_DEFAULT.list.offset,
     limit: API_DEFAULT.list.limit,
@@ -36,7 +26,7 @@ export function createListSlice (resourceType: ResourceType): {
     results: []
   }
 
-  const listSlice = createSlice({
+  return createSlice({
     name: `set${resourceType}List`,
     initialState,
     reducers: {
@@ -63,11 +53,4 @@ export function createListSlice (resourceType: ResourceType): {
       }
     }
   })
-
-  const { setOffset, setLimit, setQuery, setResults, setCount, setPrevious, setNext } = listSlice.actions
-  const listReducer = listSlice.reducer
-
-  return {
-    listSlice, listReducer, setOffset, setLimit, setQuery, setResults, setCount, setPrevious, setNext
-  }
 }

@@ -1,22 +1,23 @@
-import { useDispatch, useSelector } from "react-redux";
-import { filterSlice, type RootState } from "../../redux";
+import { useSelector } from "react-redux";
+import { type RootState } from "../../redux";
 import { type InitialFilterState } from "../../redux/types/filter.types";
 import { Button, Fieldset, FilterContent, FilterItemCheckbox, FilterItemLabel, Legend } from "./styled";
 import { useCallback } from "react";
+import { useActions } from "../../hooks/useActions";
 
 export const Filter = () => {
-  const dispatch = useDispatch()
+  const { toggleItem, toggleAll, resetAll } = useActions()
   const { allItems, selectedItems } = useSelector<RootState, InitialFilterState>(
     (state) => state.filterReducer
   )
   const onFilterItemChange = useCallback((item: string) => {
-    dispatch(filterSlice.actions.toggleItem(item))
+    toggleItem(item)
   }, [])
   const onToggleAll = useCallback(() => {
-    dispatch(filterSlice.actions.toggleAll())
+    toggleAll()
   }, [])
   const onReset = useCallback(() => {
-    dispatch(filterSlice.actions.resetAll())
+    resetAll()
   }, [])
   return <Fieldset>
       <Legend>

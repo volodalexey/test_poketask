@@ -1,16 +1,17 @@
 import { useCallback, useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { Filter } from "../../components/filter";
 import { Error } from "../../components/error";
 import { List } from "../../components/list";
 import { Pagination } from "../../components/pagination";
 import { useListPokemons } from "../../utils/srw.hooks";
 import { ClientContext } from "../../utils/client.context";
-import { type RootState, type IPokemonsListState, pokemonsListSlice, filterSlice } from "../../redux";
+import { type RootState, type IPokemonsListState } from "../../redux";
 import { Spinner } from "../../components/spinner";
+import { useActions } from "../../hooks/useActions";
 
 export const HomePage = () => {
-  const dispatch = useDispatch()
+  const { setResults, setNext, setPrevious, setCount, setOffset, setItems } = useActions()
   const mainClient = useContext(ClientContext);
   const { offset, limit, count } = useSelector<RootState, IPokemonsListState>(
     (state) => state.pokemonsListReducer
@@ -18,16 +19,16 @@ export const HomePage = () => {
   const { data, isLoading, error } = useListPokemons(mainClient, offset, limit)
   useEffect(() => {
     if (data != null) {
-      dispatch(pokemonsListSlice.setResults(data.results))
-      dispatch(pokemonsListSlice.setNext(data.next))
-      dispatch(pokemonsListSlice.setPrevious(data.previous))
-      dispatch(pokemonsListSlice.setCount(data.count))
+      setResults(data.results)
+      setNext(data.next)
+      setPrevious(data.previous)
+      setCount(data.count)
     }
   }, [data, isLoading, offset, limit, count])
 
   const onSetPage = useCallback((offset: number) => {
-    dispatch(pokemonsListSlice.setOffset(offset))
-    dispatch(filterSlice.actions.setItems([]))
+    setOffset(offset)
+    setItems([])
   }, [])
 
   return (
