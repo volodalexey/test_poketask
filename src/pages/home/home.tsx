@@ -9,19 +9,11 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useGetPokemonsQuery } from "../../redux";
 
 export const HomePage = () => {
-  const { setResults, setNext, setPrevious, setCount, setOffset, setItems } = useActions()
-  const { offset, limit, count } = useTypedSelector(
+  const { setOffset, setItems } = useActions()
+  const { offset, limit } = useTypedSelector(
     state => state.pokemonsListReducer
   )
   const { data, isLoading, error } = useGetPokemonsQuery({ offset, limit });
-  useEffect(() => {
-    if (data != null) {
-      setResults(data.results)
-      setNext(data.next)
-      setPrevious(data.previous)
-      setCount(data.count)
-    }
-  }, [data, isLoading, offset, limit, count])
 
   const onSetPage = useCallback((offset: number) => {
     setOffset(offset)
@@ -34,7 +26,7 @@ export const HomePage = () => {
       {error ? <Error error={error} /> : null}
       <Spinner isLoading={isLoading} />
       <List data={data} isLoading={isLoading} />
-      <Pagination offset={offset} limit={limit} count={count} setOffset={onSetPage} />
+      <Pagination offset={offset} limit={limit} count={data?.count} setOffset={onSetPage} />
     </div>
   );
 };

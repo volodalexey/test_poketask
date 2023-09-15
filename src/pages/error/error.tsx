@@ -1,7 +1,7 @@
-import { type ReactElement } from 'react'
+import { type FC } from 'react'
 import { useRouteError } from 'react-router-dom'
 
-export function ErrorPage ({ error }: { error?: Error } = {}): ReactElement {
+export const ErrorPage: FC<{ error?: Error }> = ({ error } = {}) => {
   const _error = error ?? useRouteError() as Error
 
   return (

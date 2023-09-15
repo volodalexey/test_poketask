@@ -11,7 +11,7 @@ export const pokemonsApi = createApi({
   tagTypes: ['Pokemons', 'Pokemon'],
   endpoints: (builder) => ({
     getPokemons: builder.query<NamedAPIResourceList, GetPokemonsQuery>({
-      query: ({ offset, limit }) => `${ENDPOINTS.POKEMON}?offset=${offset ?? API_DEFAULT.list.offset}&limit=${limit ?? API_DEFAULT.list.limit}`,
+      query: ({ offset = API_DEFAULT.list.offset, limit = API_DEFAULT.list.limit }) => `${ENDPOINTS.POKEMON}?offset=${offset}&limit=${limit}`,
       providesTags: (result) =>
         result
           ? [

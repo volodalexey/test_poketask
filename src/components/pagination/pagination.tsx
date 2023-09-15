@@ -3,12 +3,12 @@ import { Button, DivMain, DivMiddle, Span } from './styled'
 export function Pagination ({
   offset,
   limit,
-  count,
+  count = 0,
   setOffset
 }: {
   offset: number
   limit: number
-  count: number
+  count?: number
   setOffset: (offset: number) => void
 }) {
   const page = offset !== 0 ? Math.floor(offset / limit) + 1 : 1
